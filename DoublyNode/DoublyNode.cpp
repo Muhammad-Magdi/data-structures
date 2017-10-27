@@ -4,9 +4,16 @@ DoublyNode<T> :: DoublyNode(){
 }
 
 template <class T>
-DoublyNode<T> :: DoublyNode(T x){
+DoublyNode<T> :: DoublyNode(T data){
   Node<T> :: nxt = prev = nullptr;
-  Node<T> :: val = x;
+  Node<T> :: val = data;
+}
+
+template <class T>
+DoublyNode<T> :: DoublyNode(T data, DoublyNode<T>* prev_, DoublyNode<T>* nxt_){
+  Node<T> :: nxt = nxt_;
+  Node<T> :: prev = prev_;
+  Node<T> :: val = data;
 }
 
 template <class T>

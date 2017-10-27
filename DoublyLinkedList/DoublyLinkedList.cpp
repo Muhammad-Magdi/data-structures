@@ -11,7 +11,7 @@ DoublyNode<T>* DoublyLinkedList<T> :: insertBefore(DoublyNode<T>* node, T val){
 template <class T>
 DoublyNode<T> * DoublyLinkedList<T> :: findNode(int idx){
   DoublyNode<T>* newNode = new DoublyNode<T>(val);
-  
+
 }
 
 template <class T>

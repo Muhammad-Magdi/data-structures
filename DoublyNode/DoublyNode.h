@@ -7,6 +7,7 @@ private:
 public:
   DoublyNode();
   DoublyNode(T);
+  DoublyNode(T, DoublyNode<T>*, DoublyNode<T>*);
   void setPrev(DoublyNode*);
   DoublyNode* getPrev() const;
 };
