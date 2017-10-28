@@ -42,6 +42,6 @@ DoublyNode<T>* DoublyNode<T> :: getNext() const{
 }
 
 template <class T>
-T DoublyNode<T> :: getData() const{
+T& DoublyNode<T> :: getData(){
   return data;
 }

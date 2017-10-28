@@ -12,7 +12,7 @@ public:
   void setData(T);
   DoublyNode* getPrev() const;
   DoublyNode* getNext() const;
-  T getData() const;
+  T& getData();
 };
 
 #include "DoublyNode.cpp"
