@@ -1,15 +1,18 @@
-#include "../Node/Node.h"
-
 template <class T>
-class DoublyNode : public Node<T>{
+class DoublyNode{
 private:
-  Node<T> * prev;
+  T data;
+  DoublyNode<T> * prev, *next;
 public:
   DoublyNode();
   DoublyNode(T);
   DoublyNode(T, DoublyNode<T>*, DoublyNode<T>*);
-  void setPrev(DoublyNode*);
+  void setPrev(DoublyNode<T>*);
+  void setNext(DoublyNode<T>*);
+  void setData(T);
   DoublyNode* getPrev() const;
+  DoublyNode* getNext() const;
+  T getData() const;
 };
 
 #include "DoublyNode.cpp"

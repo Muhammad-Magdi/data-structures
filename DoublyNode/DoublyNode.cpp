@@ -1,27 +1,47 @@
 template <class T>
 DoublyNode<T> :: DoublyNode(){
-  Node<T> :: nxt = prev = nullptr;
+  next = prev = nullptr;
 }
 
 template <class T>
-DoublyNode<T> :: DoublyNode(T data){
-  Node<T> :: nxt = prev = nullptr;
-  Node<T> :: val = data;
+DoublyNode<T> :: DoublyNode(T data_){
+  next = prev = nullptr;
+  data = data;
 }
 
 template <class T>
-DoublyNode<T> :: DoublyNode(T data, DoublyNode<T>* prev_, DoublyNode<T>* nxt_){
-  Node<T> :: nxt = nxt_;
-  Node<T> :: prev = prev_;
-  Node<T> :: val = data;
+DoublyNode<T> :: DoublyNode(T data_, DoublyNode<T>* prev_, DoublyNode<T>* next_){
+  next = next_;
+  prev = prev_;
+  data = data_;
 }
 
 template <class T>
-void DoublyNode<T> :: setPrev(DoublyNode* node){
+void DoublyNode<T> :: setPrev(DoublyNode<T>* node){
   prev = node;
+}
+
+template <class T>
+void DoublyNode<T> :: setNext(DoublyNode<T>* node){
+  next = node;
+}
+
+template <class T>
+void DoublyNode<T> :: setData(T data_){
+  data = data_;
 }
 
 template <class T>
 DoublyNode<T>* DoublyNode<T> :: getPrev() const{
   return prev;
+}
+
+template <class T>
+DoublyNode<T>* DoublyNode<T> :: getNext() const{
+  return next;
+}
+
+template <class T>
+T DoublyNode<T> :: getData() const{
+  return data;
 }

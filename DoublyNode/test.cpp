@@ -5,9 +5,9 @@ using namespace std;
 
 int main(){
   DoublyNode<int> n;
-  n.setVal(100);
-  cout << n.getVal() << endl;
-  n.setVal(10);
-  cout << n.getVal() << endl;
+  n.setData(100);
+  cout << n.getData() << endl;
+  n.setData(10);
+  cout << n.getData() << endl;
   return 0;
 }
