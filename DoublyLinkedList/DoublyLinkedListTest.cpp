@@ -5,27 +5,20 @@ using namespace std;
 
 int main(){
   DoublyLinkedList<int> l;
-  try{
-    for(int i = 0 ; i < 10 ; ++i){
-      l.pushBack(i);
-    }
-    for(int i = 0 ; i < 10 ; ++i){
-      l.pushFront(i);
-    }
-  }catch(const char* msg){
-    cerr << "Error : " << msg << endl;
-  }
-  l.printList();
-  printf("%d\n", l.size());
-  l.front() = 1024;
-  try{
-    for(int i = 0 ; i < 10 ; ++i){
-      l.popBack();
-    }
-  }catch(const char* msg){
-    cerr << "Error : " << msg << endl;
-  }
-  l.printList();
-  printf("%d\n", l.size());
+  l.pushFront(1);
+  l.pushFront(2);
+  l.pushFront(3);
+  l.pushFront(4);
+  cout << l.front() << endl;
+  l.popFront();
+  cout << l.front() << endl;
+  l.popFront();
+  cout << l.back() << endl;
+  l.popBack();
+  cout << l.back() << endl;
+  l.popBack();
+  l.pushFront(5);
+  cout << l.front() << endl;
+  l.popFront();
   return 0;
 }

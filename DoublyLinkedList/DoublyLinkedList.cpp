@@ -46,8 +46,12 @@ DoublyNode<T> * DoublyLinkedList<T> :: findNode(int idx){
 
 template <class T>
 bool DoublyLinkedList<T> :: deleteNode(DoublyNode<T>* node){
-  if(node == nullptr) return 0;
-  if(node == head){
+  if(!numNodes || node == nullptr) return 0;
+  if(numNodes == 1){
+    delete node;
+    head = tail = nullptr;
+  }
+  else if(node == head){
     head = head->getNext();
     head->setPrev(nullptr);
     delete node;
@@ -60,8 +64,8 @@ bool DoublyLinkedList<T> :: deleteNode(DoublyNode<T>* node){
     node->getNext()->setPrev(node->getPrev());
     delete node;
   }
-  if(!numNodes)   head = tail = nullptr;
   --numNodes;
+  if(!numNodes)   head = tail = nullptr;
   return 1;
 }
 
@@ -103,7 +107,7 @@ inline void DoublyLinkedList<T> :: pushBack(T data){
 
 template <class T>
 inline void DoublyLinkedList<T> :: pushFront(T data){
-  insertBefore(head, data);
+  insert(0, data);
 }
 
 template <class T>
