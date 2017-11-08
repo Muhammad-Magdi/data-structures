@@ -19,14 +19,14 @@ DoublyNode<T>* DoublyLinkedList<T> :: insertBefore(DoublyNode<T>* node, T data){
 }
 
 template <class T>
-inline void DoublyLinkedList<T> :: step(DoublyNode<T>* node, int &idx, bool forward){
-  node = (DoublyNode<T>*)(forward? node->getNext() : node->getPrev());
+inline void DoublyLinkedList<T> :: step(DoublyNode<T>* & node, int &idx, bool forward){
+  node = (forward? node->getNext() : node->getPrev());
   idx = (forward? idx+1 : idx-1);
 }
 
 template <class T>
 DoublyNode<T> * DoublyLinkedList<T> :: findNode(int idx){
-  if(idx<0 || idx>numNodes)  throw "Invalid Index";
+  if(idx<0 || idx>=numNodes)  throw "Invalid Index";
   int dir, curIdx;
   DoublyNode<T>* cur;
   if(idx <= (numNodes >> 1)){
@@ -92,6 +92,21 @@ DoublyNode<T> * DoublyLinkedList<T> :: insert(int idx, T data){
 }
 
 template <class T>
+DoublyNode<T> * DoublyLinkedList<T> :: search(T data){
+  DoublyNode<T> * strt = head, *end = tail;
+  for(int it = numNodes>>1 ; ~it ; --it){
+    if(strt){
+      if(strt->getData() == data) return strt;
+      else strt = strt->getNext();
+    }if(end){
+      if(end->getData() == data) return end;
+      else end = end->getPrev();
+    }
+  }
+  return nullptr;
+}
+
+template <class T>
 void DoublyLinkedList<T> :: printList() const{
   DoublyNode<T>* cur = head;
   int curIdx = 0;
@@ -135,4 +150,31 @@ inline T& DoublyLinkedList<T> :: front(){
 template <class T>
 inline int DoublyLinkedList<T> :: size()const{
   return numNodes;
+}
+
+template <class T>
+inline bool DoublyLinkedList<T> :: erase(int idx){
+  if(idx<0 || idx>=numNodes)  throw "Invalid Index";
+  return deleteNode(findNode(idx));
+}
+
+template <class T>
+inline bool DoublyLinkedList<T> :: remove(T data){
+  DoublyNode<T>* node = search(data);
+  if(node)  return deleteNode(node), 1;
+  return 0;
+}
+
+template <class T>
+void DoublyLinkedList<T> :: reverse(){
+  DoublyNode<T>* cur = head, *tmp;
+  while(cur){
+    tmp = cur->getNext();
+    cur->setNext(cur->getPrev());
+    cur->setPrev(tmp);
+    cur = tmp;
+  }
+  tmp = head;
+  head = tail;
+  tail = tmp;
 }

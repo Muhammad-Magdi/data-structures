@@ -9,16 +9,9 @@ int main(){
   l.pushFront(2);
   l.pushFront(3);
   l.pushFront(4);
-  cout << l.front() << endl;
-  l.popFront();
-  cout << l.front() << endl;
-  l.popFront();
-  cout << l.back() << endl;
-  l.popBack();
-  cout << l.back() << endl;
-  l.popBack();
-  l.pushFront(5);
-  cout << l.front() << endl;
-  l.popFront();
+  l.pushFront(100);
+  l.printList();
+  l.reverse();
+  l.printList();
   return 0;
 }
