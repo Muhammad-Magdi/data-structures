@@ -2,6 +2,7 @@ template <class KT, class DT>
 inline TreeNode <KT, DT> :: TreeNode(KT k){
   key = k;
   left = right = nullptr;
+  color = 0;                      //0 is black
 }
 
 template <class KT, class DT>
@@ -9,14 +10,23 @@ TreeNode <KT, DT> :: TreeNode(KT k, DT d){
   key = k;
   data = d;
   left = right = nullptr;
+  color = 0;                      //0 is black
 }
 
 template <class KT, class DT>
-TreeNode <KT, DT> :: TreeNode(KT k, DT d, TreeNode<KT, DT>* l, TreeNode<KT, DT> * r){
+TreeNode <KT, DT> :: TreeNode(KT k, DT d, TreeNode<KT, DT>* l, TreeNode<KT, DT> * r, bool col){
   key = k;
   data = d;
   left = l;
   right = r;
+  color = col;
+}
+
+template<class KT, class DT>
+void TreeNode<KT, DT> :: setNodeValues(TreeNode<KT, DT> * node){
+  color = node->getColor();
+  data = node->getData();
+  key = node->getKey();
 }
 
 template <class KT, class DT>
@@ -25,7 +35,12 @@ inline void TreeNode <KT, DT> :: setData(DT d){
 }
 
 template <class KT, class DT>
-inline DT& TreeNode <KT, DT>:: getData(){
+inline DT TreeNode <KT, DT>:: getData() const{
+  return data;
+}
+
+template <class KT, class DT>
+inline DT& TreeNode <KT, DT>:: getDataReference(){
   return data;
 }
 
@@ -35,7 +50,7 @@ inline void TreeNode <KT, DT> :: setKey(KT k){
 }
 
 template <class KT, class DT>
-inline KT& TreeNode <KT, DT>:: getKey(){
+inline KT TreeNode <KT, DT>:: getKey() const{
   return key;
 }
 
@@ -57,4 +72,14 @@ inline TreeNode<KT, DT>* TreeNode <KT, DT>:: getLeft() const{
 template <class KT, class DT>
 inline TreeNode<KT, DT>* TreeNode <KT, DT>:: getRight() const{
   return right;
+}
+
+template<class KT, class DT>
+inline void TreeNode<KT, DT> :: setColor(bool col){
+  color = col;
+}
+
+template<class KT, class DT>
+inline bool TreeNode<KT, DT> :: getColor() const{
+  return color;
 }
