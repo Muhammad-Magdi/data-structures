@@ -6,6 +6,7 @@ using namespace std;
 int main(){
   Map<int, int> mp;
   mp[10] = 15;
+  mp[10] = 1100;
   mp.printSortedMap(mp.getRoot(), 1);
   puts("");
   mp.erase(10);

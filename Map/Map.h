@@ -9,7 +9,6 @@ private:
   int numNodes;
   TreeNode<KT, DT> * root;
   TreeNode<KT, DT> * findParent(KT)const;    //Done
-  void reBalance();
 public:
   Map();    //Done Coding and testing
   bool insert(KT, DT);    //Done Coding and testing
